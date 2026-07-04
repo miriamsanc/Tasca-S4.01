@@ -16,6 +16,7 @@ class Offer extends Model
         'category',
         'location',
         'is_active',
+        'user_id'
     ];
 
     public function user()

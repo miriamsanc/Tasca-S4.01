@@ -14,7 +14,7 @@ class OfferController extends Controller
     {
         $activeTab = $request->input('tab', 'ofreciendo_practicas');
 
-        $offers = Offer::where('type', $activeTab)->latest()->get();
+        $offers = Offer::where('type', $activeTab)->where('is_active', true)->latest()->get();
 
         return view('offers.index', compact('offers', 'activeTab'));
     }
@@ -24,7 +24,7 @@ class OfferController extends Controller
      */
     public function create()
     {
-        //
+        return view('offers.create');
     }
 
     /**
@@ -32,7 +32,22 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'type' => 'required|in:buscando_practicas,ofreciendo_practicas',
+            'category' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
+
+        $validated['user_id'] = $request->user()->id;
+                    
+        Offer::create($validated);
+
+        
+        return redirect()->route('offers.index', ['tab' => $validated['type']]) 
+                         ->with('success', 'Publicación creada correctamente.');
     }
 
     /**

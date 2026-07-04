@@ -15,7 +15,7 @@
                         {{ $offer->type === 'buscando_practicas' ? 'Candidato buscando prácticas' : 'Empresa ofreciendo prácticas' }}
                     </span>
                     <span class="inline-block px-3 py-1 bg-green-100 text-green-800 text-sm font-bold rounded-full ml-2">
-                        Estado: {{ ucfirst($offer->status) }}
+                        Estado: {{ $offer->is_active ? 'Abierta' : 'Cerrada' }}
                     </span>
                 </div>
 
@@ -38,11 +38,10 @@
                 <div class="flex items-center justify-between border-t pt-4">
                     
                     <a href="{{ route('offers.index', ['tab' => $offer->type]) }}" class="text-gray-500 hover:text-gray-700">
-                        &larr; Volver al listado
+                        &larr; Volver a la lista de ofertas
                     </a>
-                    
-                    
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 opacity-50 cursor-not-allowed" title="Lo haremos más adelante">
+                                    
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 opacity-50 cursor-not-allowed" title="">
                         Inscribirse
                     </button>
                 </div>
