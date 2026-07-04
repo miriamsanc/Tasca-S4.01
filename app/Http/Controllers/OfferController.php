@@ -14,7 +14,11 @@ class OfferController extends Controller
     {
         $activeTab = $request->input('tab', 'ofreciendo_practicas');
 
-        $offers = Offer::where('type', $activeTab)->where('is_active', true)->latest()->get();
+        $offers = Offer::with('user')
+            ->where('type', $activeTab)
+            ->where('is_active', true)
+            ->latest()
+            ->get();
 
         return view('offers.index', compact('offers', 'activeTab'));
     }
@@ -33,7 +37,7 @@ class OfferController extends Controller
     public function store(Request $request)
     {
         
-        $validated = $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'type' => 'required|in:buscando_practicas,ofreciendo_practicas',
             'category' => 'required|string|max:255',
@@ -41,12 +45,12 @@ class OfferController extends Controller
             'description' => 'required|string',
         ]);
 
-        $validated['user_id'] = $request->user()->id;
+        $validatedData['user_id'] = $request->user()->id;
                     
-        Offer::create($validated);
+        Offer::create($validatedData);
 
         
-        return redirect()->route('offers.index', ['tab' => $validated['type']]) 
+        return redirect()->route('offers.index', ['tab' => $validatedData['type']]) 
                          ->with('success', 'Publicación creada correctamente.');
     }
 
@@ -61,9 +65,13 @@ class OfferController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Offer $offer)
+    public function edit(Request $request, Offer $offer)
     {
-        //
+        if ($offer->user_id !== $request->user()->id) {
+            abort(403, 'No tienes permiso para editar esta publicación.');
+        }
+
+        return view('offers.edit', compact('offer'));
     }
 
     /**
@@ -71,14 +79,40 @@ class OfferController extends Controller
      */
     public function update(Request $request, Offer $offer)
     {
-        //
+        
+        if ($offer->user_id !== $request->user()->id) {
+            abort(403);
+        }
+
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'type' => 'required|in:buscando_practicas,ofreciendo_practicas',
+            'category' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string',
+            'is_active' => 'required|boolean',
+        ]);
+
+        $offer->update($validatedData);
+
+        
+        return redirect()->route('offers.index', ['tab' => $offer->type]) 
+                         ->with('success', 'Publicación actualizada correctamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Offer $offer)
+    public function destroy(Request $request, Offer $offer)
     {
-        //
+        
+        if ($offer->user_id !== $request->user()->id) {
+            abort(403);
+        }
+
+        $offer->delete();
+
+        return redirect()->route('offers.index', ['tab' => $offer->type]) 
+                         ->with('success', 'Publicación eliminada correctamente.');
     }
 }

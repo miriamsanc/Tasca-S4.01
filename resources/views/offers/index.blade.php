@@ -35,12 +35,31 @@
                     @foreach($offers as $offer)
                         <div class="border p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                             <h4 class="font-bold text-xl">{{ $offer->title }}</h4>
+                            <p class="text-sm text-gray-500 mb-1">
+                                👤 Publicado por: <span class="font-medium text-gray-700">{{ $offer->user->name }}</span>
+                            </p>
                             <p class="text-gray-600 mb-2">{{ $offer->category }} - {{ $offer->location }}</p>
                             
-                            <div class="mt-4">
+                            <div class="mt-4 flex items-center justify-between border-t pt-4">
                                 <a href="{{ route('offers.show', $offer) }}" class="text-indigo-600 hover:text-indigo-900 font-semibold">
                                     Ver detalles &rarr;
                                 </a>
+
+                                @if(auth()->check() && auth()->id() === $offer->user_id)
+                                    <div class="flex space-x-2">
+                                        <a href="{{ route('offers.edit', $offer) }}" class="text-sm bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded transition-colors">
+                                            Editar
+                                        </a>
+            
+                                        <form action="{{ route('offers.destroy', $offer) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que quieres eliminar esta publicación? Esta acción no se puede deshacer.');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-sm bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded transition-colors">
+                                                Eliminar
+                                            </button>
+                                        </form>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     @endforeach
