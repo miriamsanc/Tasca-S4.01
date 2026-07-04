@@ -10,9 +10,13 @@ class OfferController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $activeTab = $request->input('tab', 'ofreciendo_practicas');
+
+        $offers = Offer::where('type', $activeTab)->latest()->get();
+
+        return view('offers.index', compact('offers', 'activeTab'));
     }
 
     /**
@@ -36,7 +40,7 @@ class OfferController extends Controller
      */
     public function show(Offer $offer)
     {
-        //
+        return view('offers.show', compact('offer'));
     }
 
     /**
