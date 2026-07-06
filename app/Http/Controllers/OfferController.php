@@ -14,12 +14,21 @@ class OfferController extends Controller
     {
         $activeTab = $request->input('tab', 'ofreciendo_practicas');
 
-        $offers = Offer::with('user')
+        $query = Offer::with('user')
             ->where('type', $activeTab)
-            ->where('is_active', true)
-            ->latest()
-            ->get();
+            ->where('is_active', true);
 
+        if ($request->filled('category')) {
+            $query->where('category', 'like', '%' . $request->category . '%');
+        }
+
+    
+        if ($request->filled('location')) {
+            $query->where('location', 'like', '%' . $request->location . '%');
+        }
+        
+        $offers = $query->latest()->get();
+        
         return view('offers.index', compact('offers', 'activeTab'));
     }
 
