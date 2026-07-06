@@ -20,6 +20,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('offers', OfferController::class);
     Route::post('/offers/{offer}/apply', [ApplicationController::class, 'store'])->name('applications.store');
     Route::delete('/offers/{offer}/unapply', [ApplicationController::class, 'destroy'])->name('applications.destroy');
+    Route::get('/mis-ofertas', [OfferController::class, 'myOffers'])->name('offers.my-offers');
+
+
 });
 
 require __DIR__.'/auth.php';

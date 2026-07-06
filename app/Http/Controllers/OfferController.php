@@ -124,4 +124,25 @@ class OfferController extends Controller
         return redirect()->route('offers.index', ['tab' => $offer->type]) 
                          ->with('success', 'Publicación eliminada correctamente.');
     }
+
+    public function myOffers(Request $request)
+    {
+    $user = $request->user();
+    
+    
+    $tab = $request->query('tab', 'creadas');
+
+    
+    $createdOffers = $user->offers()->latest()->get();
+
+    
+    $applications = $user->applications()->with('offer')->latest()->get();
+
+    return view('offers.my-offers', compact('createdOffers', 'applications', 'tab'));
+    }
+
+
+
+
+
 }
