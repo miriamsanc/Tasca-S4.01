@@ -40,17 +40,50 @@
                     <p class="text-gray-600 whitespace-pre-line">{{ $offer->description }}</p>
                 </div>
 
-                <div class="flex items-center justify-between border-t pt-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-t pt-4 gap-4">
                     <a href="{{ route('offers.index', ['tab' => $offer->type]) }}" class="text-gray-500 hover:text-gray-700">
                         &larr; Volver a la lista de ofertas
                     </a>
+                                        
+                    <div>
+                        @auth
+                            @if (Auth::id() !== $offer->user_id)
+                                
+                                @php
                                     
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 opacity-50 cursor-not-allowed" title="Próximamente">
-                        Inscribirse
-                    </button>
-                </div>
+                                    $isApplied = $offer->applications->contains('user_id', Auth::id());
+                                @endphp
 
-            </div>
+                                @if ($isApplied)
+                                    <form action="{{ route('applications.destroy', $offer) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow transition">
+                                            Cancelar inscripción
+                                        </button>
+                                    </form>
+                                @else
+                                    <form action="{{ route('applications.store', $offer) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow transition">
+                                            Inscribirse 
+                                        </button>
+                                    </form>
+                                @endif
+                                
+                            @else
+                                <span class="text-sm text-gray-500 italic bg-gray-100 px-3 py-2 rounded">
+                                    Eres el creador de esta oferta
+                                </span>
+                            @endif
+                        @else
+                            <p class="text-sm text-gray-600">
+                                Debes <a href="{{ route('login') }}" class="text-blue-600 font-bold hover:underline">iniciar sesión</a> para inscribirte.
+                            </p>
+                        @endauth
+                    </div>
+                </div>
+                </div>
         </div>
     </div>
 </x-app-layout>
