@@ -1,74 +1,266 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Editar Publicación') }}
-        </h2>
+        <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-200">
+                ✏️
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-slate-700">
+                    {{ __('Editar publicación') }}
+                </h2>
+
+                <p class="text-sm text-slate-500">
+                    Actualiza la información de tu publicación.
+                </p>
+            </div>
+        </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                
+    <div class="bg-slate-50 py-10">
+        <div class="mx-auto max-w-3xl px-6">
+
+            <div class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+
                 <form method="POST" action="{{ route('offers.update', $offer) }}">
-                    @csrf 
-                    @method('PUT') <div class="mb-4">
-                        
-                        <div class="mt-2 flex space-x-6">
-                            <label class="flex items-center">
-                                <input type="radio" name="type" value="buscando_practicas" class="form-radio" {{ old('type', $offer->type) == 'buscando_practicas' ? 'checked' : '' }} required>
-                                <span class="ml-2 text-sm text-gray-600">Busco prácticas</span>
+                    @csrf
+                    @method('PUT')
+
+                    <!-- Tipo de publicación -->
+
+                    <div class="mb-8">
+
+                        <label class="mb-3 block text-sm font-semibold text-slate-700">
+                            Tipo de publicación
+                        </label>
+
+                        <div class="grid gap-4 md:grid-cols-2">
+
+                            <label class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 p-4 transition hover:border-sky-300 hover:bg-sky-50">
+
+                                <input
+                                    type="radio"
+                                    name="type"
+                                    value="buscando_practicas"
+                                    class="text-sky-500 focus:ring-sky-300"
+                                    {{ old('type', $offer->type) == 'buscando_practicas' ? 'checked' : '' }}
+                                    required>
+
+                                <div>
+                                    <p class="font-medium text-slate-700">
+                                        🎓 Busco prácticas
+                                    </p>
+
+                                    <p class="text-sm text-slate-500">
+                                        Soy estudiante y busco una empresa.
+                                    </p>
+                                </div>
+
                             </label>
-                            <label class="flex items-center">
-                                <input type="radio" name="type" value="ofreciendo_practicas" class="form-radio" {{ old('type', $offer->type) == 'ofreciendo_practicas' ? 'checked' : '' }} required>
-                                <span class="ml-2 text-sm text-gray-600">Ofrezco prácticas (Empresa)</span>
+
+                            <label class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 p-4 transition hover:border-sky-300 hover:bg-sky-50">
+
+                                <input
+                                    type="radio"
+                                    name="type"
+                                    value="ofreciendo_practicas"
+                                    class="text-sky-500 focus:ring-sky-300"
+                                    {{ old('type', $offer->type) == 'ofreciendo_practicas' ? 'checked' : '' }}
+                                    required>
+
+                                <div>
+                                    <p class="font-medium text-slate-700">
+                                        🏢 Ofrezco prácticas
+                                    </p>
+
+                                    <p class="text-sm text-slate-500">
+                                        Mi empresa busca estudiantes.
+                                    </p>
+                                </div>
+
                             </label>
+
                         </div>
+
                     </div>
 
-                    <div class="mb-4">
-                        <label for="title" class="block font-medium text-sm text-gray-700">Título</label>
-                        <input id="title" type="text" name="title" value="{{ old('title', $offer->title) }}" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label for="category" class="block font-medium text-sm text-gray-700">Categoría</label>
-                            <input id="category" type="text" name="category" value="{{ old('category', $offer->category) }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                        </div>
-                        <div>
-                            <label for="location" class="block font-medium text-sm text-gray-700">Ubicación</label>
-                            <input id="location" type="text" name="location" value="{{ old('location', $offer->location) }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                        </div>
-                    </div>
+                    <!-- Título -->
 
                     <div class="mb-6">
-                        <label for="description" class="block font-medium text-sm text-gray-700">Descripción detallada</label>
-                        <textarea id="description" name="description" rows="5" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>{{ old('description', $offer->description) }}</textarea>
+
+                        <label
+                            for="title"
+                            class="mb-2 block text-sm font-semibold text-slate-700">
+
+                            Título
+
+                        </label>
+
+                        <input
+                            id="title"
+                            type="text"
+                            name="title"
+                            value="{{ old('title', $offer->title) }}"
+                            required
+                            class="w-full rounded-xl border border-slate-300 px-4 py-3 shadow-sm focus:border-sky-300 focus:ring-sky-300">
+
                     </div>
 
-                    <div class="mb-4">
-                        <label class="block font-medium text-sm text-gray-700">Estado de la publicación</label>
-                        <div class="mt-2 flex space-x-6">
-                            <label class="flex items-center">
-                                <input type="radio" name="is_active" value="1" class="form-radio border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" {{ old('is_active', $offer->is_active) == 1 ? 'checked' : '' }} required>
-                                <span class="ml-2 text-sm text-gray-600">Abierta</span>
+                    <!-- Categoría + Ubicación -->
+
+                    <div class="mb-6 grid gap-6 md:grid-cols-2">
+
+                        <div>
+
+                            <label
+                                for="category"
+                                class="mb-2 block text-sm font-semibold text-slate-700">
+
+                                Categoría
+
                             </label>
-                            <label class="flex items-center">
-                                <input type="radio" name="is_active" value="0" class="form-radio border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" {{ old('is_active', $offer->is_active) == 0 ? 'checked' : '' }} required>
-                                <span class="ml-2 text-sm text-gray-600">Cerrada</span>
-                            </label>
+
+                            <input
+                                id="category"
+                                type="text"
+                                name="category"
+                                value="{{ old('category', $offer->category) }}"
+                                required
+                                class="w-full rounded-xl border border-slate-300 px-4 py-3 shadow-sm focus:border-sky-300 focus:ring-sky-300">
+
                         </div>
+
+                        <div>
+
+                            <label
+                                for="location"
+                                class="mb-2 block text-sm font-semibold text-slate-700">
+
+                                Ubicación
+
+                            </label>
+
+                            <input
+                                id="location"
+                                type="text"
+                                name="location"
+                                value="{{ old('location', $offer->location) }}"
+                                required
+                                class="w-full rounded-xl border border-slate-300 px-4 py-3 shadow-sm focus:border-sky-300 focus:ring-sky-300">
+
+                        </div>
+
                     </div>
 
-                    <div class="flex items-center justify-end border-t pt-4">
-                        <a href="{{ route('offers.index') }}" class="text-gray-500 hover:text-gray-700 mr-4">Cancelar</a>
-                        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
-                            Actualizar Publicación
-                        </button>
+                    <!-- Descripción -->
+
+                    <div class="mb-8">
+
+                        <label
+                            for="description"
+                            class="mb-2 block text-sm font-semibold text-slate-700">
+
+                            Descripción detallada
+
+                        </label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            rows="6"
+                            required
+                            class="w-full rounded-xl border border-slate-300 px-4 py-3 shadow-sm focus:border-sky-300 focus:ring-sky-300">{{ old('description', $offer->description) }}</textarea>
+
                     </div>
+
+                    <!-- Estado -->
+
+                    <div class="mb-8">
+
+                        <label class="mb-3 block text-sm font-semibold text-slate-700">
+                            Estado de la publicación
+                        </label>
+
+                        <div class="grid gap-4 md:grid-cols-2">
+
+                            <label class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 p-4 transition hover:border-emerald-300 hover:bg-emerald-50">
+
+                                <input
+                                    type="radio"
+                                    name="is_active"
+                                    value="1"
+                                    class="text-emerald-500 focus:ring-emerald-300"
+                                    {{ old('is_active', $offer->is_active) == 1 ? 'checked' : '' }}
+                                    required>
+
+                                <div>
+
+                                    <p class="font-medium text-slate-700">
+                                        🟢 Abierta
+                                    </p>
+
+                                    <p class="text-sm text-slate-500">
+                                        Visible para todos los usuarios.
+                                    </p>
+
+                                </div>
+
+                            </label>
+
+                            <label class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 p-4 transition hover:border-pink-300 hover:bg-pink-50">
+
+                                <input
+                                    type="radio"
+                                    name="is_active"
+                                    value="0"
+                                    class="text-pink-500 focus:ring-pink-300"
+                                    {{ old('is_active', $offer->is_active) == 0 ? 'checked' : '' }}
+                                    required>
+
+                                <div>
+
+                                    <p class="font-medium text-slate-700">
+                                        🔒 Cerrada
+                                    </p>
+
+                                    <p class="text-sm text-slate-500">
+                                        Ya no acepta nuevas solicitudes.
+                                    </p>
+
+                                </div>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Botones -->
+
+                    <div class="flex items-center justify-end gap-4 border-t border-slate-200 pt-6">
+
+                        <a
+                            href="{{ route('offers.index') }}"
+                            class="rounded-xl px-5 py-3 text-slate-500 transition hover:bg-slate-100">
+
+                            Cancelar
+
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="rounded-xl bg-violet-300 px-6 py-3 font-medium text-slate-800 shadow-sm transition-all duration-300 hover:bg-violet-400 hover:shadow-md">
+
+                            Guardar cambios
+
+                        </button>
+
+                    </div>
+
                 </form>
 
             </div>
+
         </div>
     </div>
 </x-app-layout>
