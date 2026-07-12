@@ -50,4 +50,6 @@ class ApplicationController extends Controller
 
         return back()->with('error', 'No estabas inscrito en esta oferta.');
     }
+
+    
 }
