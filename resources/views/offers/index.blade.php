@@ -12,8 +12,7 @@
                 </h2>
 
                 <p class="text-sm text-slate-500">
-                    Encuentra empresas o estudiantes según lo que estás buscando.
-                </p>
+                    Encuentra empresas o estudiantes 
             </div>
         </div>
     </x-slot>
@@ -24,12 +23,9 @@
         <div class="mx-auto max-w-7xl px-6">
 
 
-            <!-- Contenedor principal -->
-
             <div class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
 
 
-                <!-- Tabs + botón crear -->
 
                 <div class="mb-8 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
 
@@ -44,7 +40,7 @@
                                 ? 'bg-sky-200 text-slate-800 shadow-sm'
                                 : 'text-slate-500 hover:bg-white hover:text-slate-700' }}">
 
-                            🏢 Empresas ofreciendo prácticas
+                            Empresas ofreciendo prácticas
 
                         </a>
 
@@ -55,13 +51,11 @@
                                 ? 'bg-violet-200 text-slate-800 shadow-sm'
                                 : 'text-slate-500 hover:bg-white hover:text-slate-700' }}">
 
-                            🎓 Candidatos buscando prácticas
+                            Candidatos buscando prácticas
 
                         </a>
 
-
                     </nav>
-
 
 
                     <a href="{{ route('offers.create') }}"
@@ -73,11 +67,6 @@
 
 
                 </div>
-
-
-
-
-                <!-- Buscador -->
 
 
                 <div class="mb-10 rounded-2xl border border-slate-200 bg-slate-50 p-6">
@@ -96,7 +85,6 @@
                     </div>
 
 
-
                     <form action="{{ route('offers.index') }}"
                           method="GET"
                           class="grid gap-5 md:grid-cols-3">
@@ -105,7 +93,6 @@
                         <input type="hidden"
                                name="tab"
                                value="{{ $activeTab }}">
-
 
 
                         <div>
@@ -130,8 +117,6 @@
                         </div>
 
 
-
-
                         <div>
 
                             <label for="location"
@@ -150,11 +135,7 @@
                                 placeholder="Ej. Barcelona, Madrid..."
                                 class="w-full rounded-xl border border-slate-300 px-4 py-3 shadow-sm focus:border-sky-300 focus:ring-sky-300">
 
-
                         </div>
-
-
-
 
 
                         <div class="flex items-end gap-3">
@@ -169,7 +150,6 @@
                             </button>
 
 
-
                             <a href="{{ route('offers.index', ['tab' => $activeTab]) }}"
                                class="rounded-xl border border-slate-300 bg-white px-6 py-3 font-medium text-slate-600 transition hover:bg-slate-100">
 
@@ -177,21 +157,12 @@
 
                             </a>
 
-
                         </div>
-
-
 
                     </form>
 
 
                 </div>
-
-
-
-
-
-                <!-- Lista de ofertas -->
 
 
                 <div class="grid gap-6 md:grid-cols-2">
@@ -203,12 +174,9 @@
                         <div class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
 
 
-
                             <div class="mb-4 flex items-start justify-between">
 
-
                                 <div>
-
 
                                     <h3 class="text-xl font-bold text-slate-700">
 
@@ -219,7 +187,7 @@
 
                                     <p class="mt-2 text-sm text-slate-500">
 
-                                        👤 Publicado por:
+                                        Publicado por:
 
                                         <span class="font-medium text-slate-700">
                                             {{ $offer->user->name }}
@@ -227,9 +195,7 @@
 
                                     </p>
 
-
                                 </div>
-
 
 
                                 @if($offer->type === 'ofreciendo_practicas')
@@ -251,35 +217,24 @@
                                 @endif
 
 
-
                             </div>
-
-
-
-
 
                             <div class="mb-5 flex flex-wrap gap-2">
 
-
                                 <span class="rounded-full bg-sky-100 px-3 py-1 text-xs font-medium text-sky-700">
 
-                                    📍 {{ $offer->location }}
+                                    {{ $offer->location }}
 
                                 </span>
 
-
-
                                 <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-700">
 
-                                    🏷 {{ $offer->category }}
+                                    {{ $offer->category }}
 
                                 </span>
 
 
                             </div>
-
-
-
 
 
                             @if($offer->description)
@@ -293,12 +248,7 @@
                             @endif
 
 
-
-
-
-
                             <div class="flex items-center justify-between border-t border-slate-200 pt-5">
-
 
 
                                 <a href="{{ route('offers.show', $offer) }}"
@@ -307,9 +257,6 @@
                                     Ver oferta →
 
                                 </a>
-
-
-
 
 
                                 @if(auth()->check() && auth()->id() === $offer->user_id)
@@ -325,10 +272,6 @@
 
                                         </a>
 
-
-
-
-
                                         <form action="{{ route('offers.destroy', $offer) }}"
                                               method="POST"
                                               onsubmit="return confirm('¿Estás seguro de que quieres eliminar esta publicación? Esta acción no se puede deshacer.');">
@@ -339,7 +282,6 @@
                                             @method('DELETE')
 
 
-
                                             <button
                                                 type="submit"
                                                 class="rounded-lg bg-pink-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-pink-300">
@@ -348,49 +290,29 @@
 
                                             </button>
 
-
                                         </form>
-
 
 
                                     </div>
 
-
                                 @endif
-
 
 
                             </div>
 
-
-
                         </div>
-
 
 
                     @endforeach
 
 
-
                 </div>
-
-
-
-
-
-
-                <!-- Sin resultados -->
 
 
                 @if($offers->isEmpty())
 
 
                     <div class="py-16 text-center">
-
-
-                        <div class="mb-4 text-5xl">
-                            📭
-                        </div>
 
 
                         <h3 class="mb-2 text-xl font-semibold text-slate-700">
@@ -402,10 +324,9 @@
 
                         <p class="mb-6 text-slate-500">
 
-                            Sé el primero en crear una oportunidad.
+                            Sé el primero en crear una oportunidad
 
                         </p>
-
 
 
                         <a href="{{ route('offers.create') }}"
@@ -415,22 +336,14 @@
 
                         </a>
 
-
                     </div>
-
 
                 @endif
 
-
-
-
             </div>
-
 
         </div>
 
-
     </div>
-
 
 </x-app-layout>

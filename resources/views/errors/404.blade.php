@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - PractiHub</title>
+    <title>404 Error - PractiHub</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -11,8 +11,7 @@
 
     <div class="max-w-xl rounded-3xl bg-white p-10 shadow-lg text-center border border-pink-100">
 
-        <div class="text-7xl mb-4">🌸</div>
-
+        
         <h1 class="text-7xl font-bold text-pink-300">404</h1>
 
         <h2 class="mt-4 text-3xl font-bold text-slate-700">
@@ -20,7 +19,7 @@
         </h2>
 
         <p class="mt-4 text-slate-600">
-            La página que buscas no existe o ha sido eliminada.
+            La página que buscas no existe o ha sido eliminada
         </p>
 
         <a href="{{ url('/') }}"

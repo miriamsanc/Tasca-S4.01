@@ -83,21 +83,7 @@
                     y consigue la experiencia que necesitas para empezar tu carrera
                 </p>
 
-                <div class="bg-white rounded-2xl shadow-lg p-3 flex flex-col sm:flex-row gap-3 max-w-xl">
-
-                    <div class="flex-1 flex items-center px-4 bg-slate-50 rounded-xl">
-                        🔍
-                        <input
-                            type="text"
-                            placeholder="Buscar prácticas..."
-                            class="w-full bg-transparent border-0 focus:ring-0">
-                    </div>
-
-                    <button class="px-6 py-3 rounded-xl bg-sky-300 text-sky-900 font-semibold hover:bg-sky-400 transition">
-                        Buscar
-                    </button>
-
-                </div>
+                
 
             </div>
 
@@ -286,7 +272,6 @@
             <p class="mb-8">
                 Únete a estudiantes y empresas que ya están conectando.
             </p>
-
 
             @guest
 

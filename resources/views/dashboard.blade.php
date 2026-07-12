@@ -5,11 +5,11 @@
         <div>
 
             <h2 class="text-3xl font-bold text-slate-700">
-                Hola, {{ Auth::user()->name }} 👋
+                Hola, {{ Auth::user()->name }} 
             </h2>
 
             <p class="mt-2 text-slate-500">
-                Gestiona tus prácticas, publicaciones y oportunidades profesionales.
+                Gestiona tus prácticas, publicaciones y oportunidades profesionales
             </p>
 
         </div>
@@ -26,18 +26,14 @@
 
                 <div class="rounded-2xl bg-sky-100 p-6 shadow-sm">
 
-                    <div class="mb-3 text-4xl">
-                        💼
-                    </div>
-
-
+            
                     <h3 class="text-lg font-semibold text-slate-700">
                         Mis publicaciones
                     </h3>
 
 
                     <p class="mt-2 text-sm text-slate-600">
-                        Consulta y gestiona tus ofertas creadas.
+                        Consulta y gestiona tus ofertas creadas
                     </p>
 
 
@@ -54,17 +50,14 @@
 
                 <div class="rounded-2xl bg-violet-100 p-6 shadow-sm">
 
-                    <div class="mb-3 text-4xl">
-                        🎓
-                    </div>
-
+                
                     <h3 class="text-lg font-semibold text-slate-700">
                         Buscar prácticas
                     </h3>
 
 
                     <p class="mt-2 text-sm text-slate-600">
-                        Explora nuevas oportunidades profesionales.
+                        Explora nuevas oportunidades profesionales
                     </p>
 
 
@@ -81,19 +74,14 @@
 
                 <div class="rounded-2xl bg-emerald-100 p-6 shadow-sm">
 
-
-                    <div class="mb-3 text-4xl">
-                        🚀
-                    </div>
-
-
+                  
                     <h3 class="text-lg font-semibold text-slate-700">
                         Publicar oportunidad
                     </h3>
 
 
                     <p class="mt-2 text-sm text-slate-600">
-                        Crea una nueva oferta de prácticas.
+                        Crea una nueva oferta de prácticas
                     </p>
 
 
@@ -126,7 +114,7 @@
 
                             Desde aquí puedes encontrar prácticas,
                             gestionar tus publicaciones y conectar con empresas
-                            o estudiantes.
+                            o estudiantes
 
                         </p>
 
@@ -134,11 +122,6 @@
                     </div>
 
                     <div class="rounded-2xl bg-amber-100 p-6 text-center">
-
-
-                        <div class="text-4xl">
-                            🌱
-                        </div>
 
 
                         <p class="mt-2 text-sm font-medium text-slate-700">
