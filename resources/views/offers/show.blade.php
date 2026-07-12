@@ -11,13 +11,9 @@
             <div>
 
                 <h2 class="text-2xl font-semibold text-slate-700">
-                    {{ $offer->title }}
+                    Detalle de la publicación
                 </h2>
-
-                <p class="text-sm text-slate-500">
-                    Detalle de la oportunidad.
-                </p>
-
+        
             </div>
 
         </div>
@@ -25,26 +21,16 @@
     </x-slot>
 
 
-
-
     <div class="bg-slate-50 py-10">
 
-
         <div class="mx-auto max-w-5xl px-6">
-
 
             <div class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
 
 
-
-                <!-- Cabecera oferta -->
-
-
                 <div class="mb-8 flex flex-col gap-5 border-b border-slate-200 pb-6 md:flex-row md:items-start md:justify-between">
 
-
                     <div>
-
 
                         <h1 class="text-3xl font-bold text-slate-700">
                             {{ $offer->title }}
@@ -53,7 +39,7 @@
 
                         <p class="mt-3 text-slate-500">
 
-                            👤 Publicado por:
+                            Publicado por:
 
                             <span class="font-semibold text-slate-700">
                                 {{ $offer->user->name }}
@@ -61,31 +47,24 @@
 
                         </p>
 
-
                     </div>
-
-
 
 
                     <div class="flex flex-wrap gap-2">
 
-
                         @if($offer->type === 'buscando_practicas')
 
                             <span class="rounded-full bg-violet-100 px-4 py-2 text-sm font-medium text-violet-700">
-                                🎓 Candidato buscando prácticas
+                                Candidato buscando prácticas
                             </span>
 
                         @else
 
                             <span class="rounded-full bg-sky-100 px-4 py-2 text-sm font-medium text-sky-700">
-                                🏢 Empresa ofreciendo prácticas
+                                Empresa ofreciendo prácticas
                             </span>
 
                         @endif
-
-
-
 
 
                         @if($offer->is_active)
@@ -105,19 +84,10 @@
 
                     </div>
 
-
-
                 </div>
 
 
-
-
-
-                <!-- Información rápida -->
-
-
                 <div class="mb-8 grid gap-5 md:grid-cols-2">
-
 
 
                     <div class="rounded-2xl bg-sky-50 p-5">
@@ -127,15 +97,11 @@
                             Categoría
                         </p>
 
-
                         <p class="text-lg font-semibold text-slate-700">
-                            🏷 {{ $offer->category }}
+                            {{ $offer->category }}
                         </p>
 
-
                     </div>
-
-
 
 
                     <div class="rounded-2xl bg-violet-50 p-5">
@@ -145,25 +111,15 @@
                             Ubicación
                         </p>
 
-
                         <p class="text-lg font-semibold text-slate-700">
-                            📍 {{ $offer->location }}
+                            {{ $offer->location }}
                         </p>
 
 
                     </div>
 
 
-
                 </div>
-
-
-
-
-
-
-
-                <!-- Descripción -->
 
 
                 <div class="mb-8 rounded-2xl border border-slate-200 p-6">
@@ -173,21 +129,12 @@
                         Descripción
                     </h3>
 
-
                     <p class="whitespace-pre-line leading-relaxed text-slate-600">
                         {{ $offer->description }}
                     </p>
 
 
                 </div>
-
-
-
-
-
-
-
-                <!-- Acciones -->
 
 
                 <div class="flex flex-col gap-5 border-t border-slate-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
@@ -200,18 +147,11 @@
 
                     </a>
 
-
-
-
-
                     <div>
-
 
                         @auth
 
-
                             @if (Auth::id() !== $offer->user_id)
-
 
 
                                 @php
@@ -221,11 +161,7 @@
                                 @endphp
 
 
-
-
-
                                 @if ($isApplied)
-
 
 
                                     <form action="{{ route('applications.destroy', $offer) }}"
@@ -235,8 +171,6 @@
                                         @csrf
 
                                         @method('DELETE')
-
-
 
                                         <button
                                             type="submit"
@@ -249,13 +183,7 @@
 
                                     </form>
 
-
-
-
-
                                 @else
-
-
 
                                     <form action="{{ route('applications.store', $offer) }}"
                                           method="POST">
@@ -263,50 +191,32 @@
 
                                         @csrf
 
-
-
                                         <button
                                             type="submit"
                                             class="rounded-xl bg-sky-300 px-8 py-3 font-semibold text-slate-800 shadow-sm transition-all duration-300 hover:bg-sky-400 hover:shadow-md">
 
-                                            Solicitar prácticas 🚀
+                                            Inscribirse 
 
                                         </button>
 
-
                                     </form>
-
-
 
                                 @endif
 
 
-
-
-
-
-
                             @else
-
-
 
                                 <div class="rounded-xl bg-slate-100 px-5 py-3 text-sm text-slate-600">
 
-                                    ✨ Eres el creador de esta oferta
+                                    Eres el creador de esta oferta
 
                                 </div>
-
 
 
                             @endif
 
 
-
-
-
-
                         @else
-
 
 
                             <p class="rounded-xl bg-amber-100 px-5 py-3 text-sm text-amber-800">
@@ -327,27 +237,20 @@
                             </p>
 
 
-
                         @endauth
-
 
 
                     </div>
 
 
-
                 </div>
-
 
 
             </div>
 
 
-
         </div>
 
-
     </div>
-
 
 </x-app-layout>

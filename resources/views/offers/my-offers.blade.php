@@ -15,7 +15,7 @@
                 </h2>
 
                 <p class="text-sm text-slate-500">
-                    Gestiona tus publicaciones y tus inscripciones.
+                    Gestiona tus publicaciones y tus inscripciones
                 </p>
 
             </div>
@@ -32,9 +32,7 @@
 
             <div class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
 
-
-
-                <!-- Resumen -->
+               
 
                 <div class="mb-8 grid gap-4 md:grid-cols-2">
 
@@ -50,7 +48,6 @@
                         </p>
 
                     </div>
-
 
 
                     <div class="rounded-2xl bg-violet-100 p-5">
@@ -69,11 +66,6 @@
                 </div>
 
 
-
-
-                <!-- Tabs -->
-
-
                 <div class="mb-8 flex rounded-2xl bg-slate-100 p-1">
 
 
@@ -83,12 +75,10 @@
                             ? 'bg-sky-200 text-slate-800 shadow-sm'
                             : 'text-slate-500 hover:bg-white' }}">
 
-                        💼 Ofertas publicadas
+                        Ofertas publicadas
                         ({{ $createdOffers->count() }})
 
                     </a>
-
-
 
 
                     <a href="{{ route('offers.my-offers', ['tab' => 'inscripciones']) }}"
@@ -97,21 +87,12 @@
                             ? 'bg-violet-200 text-slate-800 shadow-sm'
                             : 'text-slate-500 hover:bg-white' }}">
 
-                        🎓 Mis inscripciones
+                        Mis inscripciones
                         ({{ $applications->count() }})
 
                     </a>
 
-
-
                 </div>
-
-
-
-
-
-
-                <!-- Publicaciones creadas -->
 
 
                 @if ($tab === 'creadas')
@@ -122,18 +103,14 @@
 
                         <div class="py-14 text-center">
 
-                            <div class="mb-4 text-5xl">
-                                📭
-                            </div>
-
-
+                    
                             <h3 class="mb-2 text-xl font-semibold text-slate-700">
                                 No tienes publicaciones todavía
                             </h3>
 
 
                             <p class="mb-6 text-slate-500">
-                                Crea una oferta para empezar a recibir candidatos.
+                                Crea una oferta para empezar a recibir candidatos
                             </p>
 
 
@@ -148,9 +125,7 @@
                         </div>
 
 
-
                     @else
-
 
 
                         <div class="grid gap-5 md:grid-cols-2">
@@ -173,7 +148,6 @@
                                         </a>
 
 
-
                                         @if($offer->is_active)
 
                                             <span class="h-fit rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-700">
@@ -192,16 +166,12 @@
                                     </div>
 
 
-
                                     <div class="mb-5 text-sm text-slate-500">
 
-                                        📅 Publicada el
+                                        Publicada el
                                         {{ $offer->created_at->format('d/m/Y') }}
 
                                     </div>
-
-
-
 
                                     <div class="flex justify-between border-t border-slate-200 pt-4">
 
@@ -213,8 +183,6 @@
 
                                         </a>
 
-
-
                                         <a href="{{ route('offers.edit', $offer) }}"
                                            class="rounded-xl bg-violet-200 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-violet-300">
 
@@ -223,13 +191,10 @@
                                         </a>
 
 
-
                                     </div>
 
 
-
                                 </div>
-
 
                             @endforeach
 
@@ -237,20 +202,10 @@
                         </div>
 
 
-
                     @endif
 
 
-
                 @endif
-
-
-
-
-
-
-
-                <!-- Inscripciones -->
 
 
                 @if ($tab === 'inscripciones')
@@ -261,36 +216,24 @@
 
                         <div class="py-14 text-center">
 
-
-                            <div class="mb-4 text-5xl">
-                                🎓
-                            </div>
-
-
+                    
                             <h3 class="mb-2 text-xl font-semibold text-slate-700">
                                 No tienes inscripciones todavía
                             </h3>
 
-
                             <p class="text-slate-500">
-                                Explora ofertas y solicita tus primeras prácticas.
+                                Explora ofertas y solicita tus primeras prácticas
                             </p>
-
 
                         </div>
 
-
-
                     @else
-
 
 
                         <div class="grid gap-5 md:grid-cols-2">
 
 
                             @foreach($applications as $application)
-
-
 
                                 <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
 
@@ -303,16 +246,13 @@
                                     </a>
 
 
-
                                     <p class="mt-3 text-sm text-slate-500">
 
-                                        📅 Inscrito el:
+                                        Inscrito el:
 
                                         {{ $application->created_at->format('d/m/Y') }}
 
                                     </p>
-
-
 
 
                                     <div class="mt-5 border-t border-slate-200 pt-4">
@@ -325,38 +265,27 @@
 
                                         </a>
 
-
                                     </div>
-
 
 
                                 </div>
 
 
-
-
                             @endforeach
 
-
                         </div>
-
 
 
                     @endif
 
 
-
                 @endif
-
 
 
             </div>
 
-
         </div>
 
-
     </div>
-
 
 </x-app-layout>

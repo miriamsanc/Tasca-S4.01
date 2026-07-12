@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,11 +14,10 @@
 
 <body class="bg-slate-50 text-slate-700 antialiased">
 
-    <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-            <a href="/" class="flex items-center gap-2">
+            <a href="#" class="flex items-center gap-2">
                 <div class="w-10 h-10 rounded-xl bg-sky-200 flex items-center justify-center text-xl">
                     🎓
                 </div>
@@ -27,26 +26,6 @@
                     PractiHub
                 </span>
             </a>
-
-
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#" class="hover:text-sky-600 transition">
-                    Inicio
-                </a>
-
-                <a href="#" class="hover:text-sky-600 transition">
-                    Prácticas
-                </a>
-
-                <a href="#" class="hover:text-sky-600 transition">
-                    Empresas
-                </a>
-
-                <a href="#" class="hover:text-sky-600 transition">
-                    Cómo funciona
-                </a>
-            </nav>
-
 
             <div class="flex items-center gap-3">
 
@@ -64,7 +43,6 @@
                         Entrar
                     </a>
 
-
                     @if(Route::has('register'))
 
                         <a href="{{ route('register') }}"
@@ -81,13 +59,9 @@
         </div>
     </header>
 
-
-
-    <!-- Hero -->
     <section class="max-w-7xl mx-auto px-6 pt-20 pb-16">
 
         <div class="grid lg:grid-cols-2 gap-12 items-center">
-
 
             <div>
 
@@ -106,32 +80,12 @@
 
                 <p class="text-lg text-slate-600 mb-8 max-w-xl">
                     Conecta con empresas, descubre oportunidades
-                    y consigue la experiencia que necesitas para empezar tu carrera.
+                    y consigue la experiencia que necesitas para empezar tu carrera
                 </p>
 
-
-
-                <div class="bg-white rounded-2xl shadow-lg p-3 flex flex-col sm:flex-row gap-3 max-w-xl">
-
-                    <div class="flex-1 flex items-center px-4 bg-slate-50 rounded-xl">
-                        🔍
-                        <input
-                            type="text"
-                            placeholder="Buscar prácticas..."
-                            class="w-full bg-transparent border-0 focus:ring-0">
-                    </div>
-
-
-                    <button class="px-6 py-3 rounded-xl bg-sky-300 text-sky-900 font-semibold hover:bg-sky-400 transition">
-                        Buscar
-                    </button>
-
-                </div>
-
+                
 
             </div>
-
-
 
             <div class="relative">
 
@@ -154,7 +108,6 @@
                             </span>
                         </div>
 
-
                         <div class="bg-violet-100 rounded-2xl p-6">
                             <div class="text-3xl mb-3">
                                 🏢
@@ -168,7 +121,6 @@
                                 buscando talento
                             </span>
                         </div>
-
 
                         <div class="bg-emerald-100 rounded-2xl p-6">
                             <div class="text-3xl mb-3">
@@ -184,7 +136,6 @@
                             </span>
                         </div>
 
-
                         <div class="bg-amber-100 rounded-2xl p-6">
                             <div class="text-3xl mb-3">
                                 ⭐
@@ -199,33 +150,24 @@
                             </span>
                         </div>
 
-
                     </div>
 
                 </div>
 
             </div>
 
-
         </div>
 
     </section>
 
-
-
-
-
-    <!-- Categorías -->
+    
     <section class="max-w-7xl mx-auto px-6 py-16">
 
-
         <h2 class="text-3xl font-bold text-center text-slate-800 mb-10">
-            Encuentra prácticas por área
+            Encuentra prácticas por categoria
         </h2>
 
-
         <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
-
 
             @foreach([
                 ['💻','Informática'],
@@ -235,7 +177,6 @@
                 ['💰','Finanzas'],
                 ['🏥','Sanidad']
             ] as $category)
-
 
                 <div class="bg-white rounded-2xl shadow-sm p-5 text-center hover:-translate-y-1 transition">
 
@@ -249,31 +190,22 @@
 
                 </div>
 
-
             @endforeach
-
 
         </div>
 
     </section>
 
-
-
-
-
-    <!-- Como funciona -->
-    <section class="bg-white py-16">
+    
+    <section id="como-funciona" class="bg-white py-16 scroll-mt-24">
 
         <div class="max-w-7xl mx-auto px-6">
-
 
             <h2 class="text-3xl font-bold text-center text-slate-800 mb-12">
                 ¿Cómo funciona?
             </h2>
 
-
             <div class="grid md:grid-cols-3 gap-8">
-
 
                 <div class="text-center">
 
@@ -286,12 +218,10 @@
                     </h3>
 
                     <p class="text-slate-600">
-                        Añade tus estudios, habilidades y experiencia.
+                        Añade tus estudios, habilidades y experiencia
                     </p>
 
                 </div>
-
-
 
                 <div class="text-center">
 
@@ -304,13 +234,10 @@
                     </h3>
 
                     <p class="text-slate-600">
-                        Busca prácticas adaptadas a tu perfil.
+                        Busca prácticas adaptadas a tu perfil
                     </p>
 
                 </div>
-
-
-
 
                 <div class="text-center">
 
@@ -323,39 +250,28 @@
                     </h3>
 
                     <p class="text-slate-600">
-                        Contacta con empresas y gana experiencia.
+                        Contacta con empresas y gana experiencia
                     </p>
 
                 </div>
 
-
             </div>
-
 
         </div>
 
     </section>
 
-
-
-
-
-    <!-- CTA -->
     <section class="max-w-7xl mx-auto px-6 py-16">
 
-
         <div class="rounded-3xl bg-sky-200 p-10 text-center">
-
 
             <h2 class="text-3xl font-bold text-slate-800 mb-4">
                 Tu primera oportunidad empieza aquí
             </h2>
 
-
             <p class="mb-8">
                 Únete a estudiantes y empresas que ya están conectando.
             </p>
-
 
             @guest
 
@@ -366,47 +282,9 @@
 
             @endguest
 
-
         </div>
-
 
     </section>
-
-
-
-
-    <!-- Footer -->
-    <footer class="border-t border-slate-200 py-8">
-
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-4 text-sm text-slate-500">
-
-
-            <span>
-                © {{ date('Y') }} PractiHub
-            </span>
-
-
-            <div class="flex gap-6">
-
-                <a href="#">
-                    Contacto
-                </a>
-
-                <a href="#">
-                    Empresas
-                </a>
-
-                <a href="#">
-                    Ayuda
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </footer>
-
 
 </body>
 </html>

@@ -45,9 +45,6 @@
                 </a>
 
 
-
-
-
                 <!-- Desktop links -->
 
 
@@ -65,7 +62,6 @@
 
 
 
-
                     <x-nav-link
                         :href="route('offers.index')"
                         :active="request()->routeIs('offers.index')"
@@ -74,9 +70,6 @@
                         🔍 Explorar
 
                     </x-nav-link>
-
-
-
 
 
                     <x-nav-link
@@ -89,16 +82,10 @@
                     </x-nav-link>
 
 
-
                 </div>
 
 
             </div>
-
-
-
-
-
 
 
             <!-- Usuario -->
@@ -124,12 +111,9 @@
                             </div>
 
 
-
                             <span>
                                 {{ Auth::user()->name }}
                             </span>
-
-
 
 
                             <svg class="h-4 w-4 text-slate-400"
@@ -143,14 +127,9 @@
 
                             </svg>
 
-
                         </button>
 
-
                     </x-slot>
-
-
-
 
 
                     <x-slot name="content">
@@ -161,9 +140,6 @@
                             ⚙️ Perfil
 
                         </x-dropdown-link>
-
-
-
 
 
                         <form method="POST" action="{{ route('logout') }}">
@@ -187,16 +163,10 @@
                     </x-slot>
 
 
-
                 </x-dropdown>
 
 
             </div>
-
-
-
-
-
 
             <!-- Mobile button -->
 
@@ -249,12 +219,6 @@
     </div>
 
 
-
-
-
-
-
-
     <!-- Menú móvil -->
 
 
@@ -276,7 +240,6 @@
 
 
 
-
             <x-responsive-nav-link
                 :href="route('offers.index')"
                 :active="request()->routeIs('offers.index')">
@@ -284,8 +247,6 @@
                 🔍 Explorar ofertas
 
             </x-responsive-nav-link>
-
-
 
 
             <x-responsive-nav-link
@@ -297,12 +258,7 @@
             </x-responsive-nav-link>
 
 
-
         </div>
-
-
-
-
 
         <div class="border-t border-slate-200 px-6 py-4">
 
@@ -326,9 +282,6 @@
             </div>
 
 
-
-
-
             <div class="mt-4 space-y-1">
 
 
@@ -337,9 +290,6 @@
                     ⚙️ Perfil
 
                 </x-responsive-nav-link>
-
-
-
 
 
                 <form method="POST" action="{{ route('logout') }}">
@@ -356,20 +306,14 @@
 
                     </x-responsive-nav-link>
 
-
                 </form>
-
 
 
             </div>
 
-
-
         </div>
 
-
     </div>
-
 
 
 </nav>

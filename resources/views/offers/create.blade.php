@@ -25,8 +25,7 @@
                 <form method="POST" action="{{ route('offers.store') }}">
                     @csrf
 
-                    <!-- Tipo -->
-
+                    
                     <div class="mb-8">
 
                         <label class="mb-3 block text-sm font-semibold text-slate-700">
@@ -48,11 +47,11 @@
 
                                 <div>
                                     <p class="font-medium text-slate-700">
-                                        🎓 Busco prácticas
+                                        Busco prácticas
                                     </p>
 
                                     <p class="text-sm text-slate-500">
-                                        Soy estudiante y busco una empresa.
+                                        Soy estudiante 
                                     </p>
                                 </div>
 
@@ -71,11 +70,11 @@
 
                                 <div>
                                     <p class="font-medium text-slate-700">
-                                        🏢 Ofrezco prácticas
+                                        Ofrezco prácticas
                                     </p>
 
                                     <p class="text-sm text-slate-500">
-                                        Mi empresa busca estudiantes.
+                                        Mi empresa busca estudiantes
                                     </p>
                                 </div>
 
@@ -89,8 +88,7 @@
 
                     </div>
 
-                    <!-- Título -->
-
+                    
                     <div class="mb-6">
 
                         <label
@@ -116,8 +114,7 @@
 
                     </div>
 
-                    <!-- Categoría + Ubicación -->
-
+                    
                     <div class="mb-6 grid gap-6 md:grid-cols-2">
 
                         <div>
@@ -172,8 +169,7 @@
 
                     </div>
 
-                    <!-- Descripción -->
-
+                    
                     <div class="mb-8">
 
                         <label
@@ -197,8 +193,7 @@
 
                     </div>
 
-                    <!-- Botones -->
-
+                    
                     <div class="flex items-center justify-end gap-4 border-t border-slate-200 pt-6">
 
                         <a
